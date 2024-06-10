@@ -643,3 +643,46 @@ var mobiles = {
       },
     },
   };
+
+
+  let brand = document.getElementById('brand');
+let model = document.getElementById('model');
+
+
+var brandsKeys = Object.keys(mobiles)
+
+for(var i = 0;i<brandsKeys.length;i++){
+
+brand.innerHTML += `<option>${brandsKeys[i]}</option>`
+    // console.log(brandsKeys[i])
+}
+
+function selectBrand(){
+    let selectBrand = brand.value;
+    let allModels = Object.keys(mobiles[selectBrand]);
+
+    for(var i = 0;i<allModels.length;i++){
+        model.innerHTML += `<option>${allModels[i]}</option>` 
+    }
+
+    console.log("allModels==>",allModels)
+}
+
+function sechBtn(){
+    let Card = document.getElementById('cardPortion');
+
+    var filterObj = mobiles[brand.value][model.value];
+
+    console.log(mobiles[brand.value][model.value])
+
+    Card.innerHTML = `<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">${filterObj.brand}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">${filterObj.operatingSystem}</h6>
+    <p class="card-text">Processor: ${filterObj.processor}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>`
+
+}
